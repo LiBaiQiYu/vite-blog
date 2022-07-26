@@ -11,9 +11,21 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("../pages/home.vue")
     },
     {
-        path: '/my',
-        component: () => import("../pages/my.vue")
+        path: '/main',
+        component: () => import("../pages/menu/main.vue")
     },
+    {
+        path: '/blog',
+        component: () => import("../pages/menu/blog.vue")
+    },
+    {
+        path: '/my',
+        component: () => import("../pages/menu/my.vue")
+    },
+    {
+        path: '/viewblog',
+        component: ()=>import("../pages/markDown.vue")
+    }
 ]
 
 const router = createRouter({

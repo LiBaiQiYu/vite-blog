@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import my from './my.vue';
+import my from './menu/my.vue';
+import mainPage from './menu/main.vue'
+import blog from './menu/blog.vue'
+import viewBlog from './markDown.vue'
 
 const active = ref(0)
+const view = ref(true)
 const menuList = ref([
     { name: '首页' },
     { name: '日志' }, 
@@ -18,7 +22,10 @@ const menuList = ref([
         </div>
 
         <div class="content">
-            <my v-show="active==3"></my>
+            <my v-show="active===3"></my>
+            <blog v-show="active===1 && view ===false"></blog>
+            <main-page v-show="active===0"></main-page>
+            <view-blog v-show="active===1 && view===true"></view-blog>
         </div>
     </div>
 </template>
@@ -28,13 +35,16 @@ const menuList = ref([
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: #EEE;
 
     .top-bar {
         height: 60px;
-        width: 100%;
+        width: 800px;
+        margin: 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
+        background-color: #FFF;
 
         div {
             margin: 0 20px;
@@ -60,6 +70,12 @@ const menuList = ref([
     .content {
         flex: 1;
         overflow-y: auto;
+        max-width: 800px;
+        width: 800px;
+        margin: 0 auto;
+        background-color: #FFF;
+        padding: 10px;
+        box-sizing: border-box;
     }
 }
 </style>
